@@ -1,4 +1,5 @@
 # NewsApiTestTask
+[![Build](https://github.com/overpas/NewsApiTestTask/actions/workflows/build.yml/badge.svg)](https://github.com/overpas/NewsApiTestTask/actions/workflows/build.yml)
 
 ### Run
 

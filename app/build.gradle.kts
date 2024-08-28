@@ -10,7 +10,12 @@ plugins {
 }
 
 val localProperties = Properties()
-localProperties.load(File(rootDir, "local.properties").inputStream())
+val newsApiKey = File(rootDir, "local.properties")
+    .takeIf(File::exists)
+    ?.let(File::inputStream)
+    ?.let(localProperties::load)
+    ?.let { localProperties.getProperty("news.api.key") }
+    ?: "[default_news_api_key]"
 
 android {
     namespace = "com.example.newsapitesttask"
@@ -35,10 +40,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "NEWS_API_KEY", "\"${localProperties.getProperty("news.api.key")}\"")
+            buildConfigField("String", "NEWS_API_KEY", "\"$newsApiKey\"")
         }
         release {
-            buildConfigField("String", "NEWS_API_KEY", "\"${localProperties.getProperty("news.api.key")}\"")
+            buildConfigField("String", "NEWS_API_KEY", "\"$newsApiKey\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
