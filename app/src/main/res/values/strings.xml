@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NewsApiTestTask</string>
+    <string name="api_error_message">Something went wrong, please try again later</string>
+    <string name="unknown">[unknown]</string>
+    <string name="back">Navigate up</string>
+    <string name="article_more">Read more</string>
 </resources>
